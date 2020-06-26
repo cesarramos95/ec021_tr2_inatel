@@ -21,6 +21,27 @@ function logRequest(req, res, next) {
     console.log(msg);
     next();
 }
+/* Conexão com o servidor de autenticação externo à aplicação
+   para a realização do login */
+   const login = axios.create(
+    {
+        baseURL: `https://ec021-av2-auth.herokuapp.com`
+    }
+)
+
+// Efetuando login
+server.post('/auth/login', logRequest, (req, res) => {
+    let URL = '/auth/login';
+    body = req.body;
+
+    login.post(URL, body, {})
+        .then((response) => {
+            res.json(response.status, response.data);
+        })
+        .catch((err) => {
+            res.json(err.response.data);
+        });
+});
 
 
 // Rota de criação de meme
