@@ -43,6 +43,34 @@ server.post('/auth/login', logRequest, (req, res) => {
         });
 });
 
+/* Conexão com o middleware de autenticação (auth-server) externo à
+   aplicação para a validação do token gerado */
+   const authServer = axios.create(
+    {
+        baseURL: `https://ec021-av2-auth.herokuapp.com`
+    }
+)
+
+// Função de validação do token
+function validateToken(req, res, next) {
+    let URL = '/auth/validateToken';
+    let token = req.headers.token;
+    let config = {
+        headers: {
+            token: token
+        }
+    }
+    if(!token) {
+        res.send(401);
+    }
+    authServer.post(URL, {}, config)
+        .then((response) => {
+            next();
+        })
+        .catch((err) => {
+            res.json(err.response.data);
+        });
+}
 
 // Rota de criação de meme
 server.post(`${MEME}`, logRequest, validateToken, async (req, res) => {
