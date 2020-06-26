@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "34a4599f-2a0d-4dc3-8bb3-a1dac5b6bec7",
+		"name": "TR2_EC021",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Buscar todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/meme",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"meme"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/meme?id=5eefe63f7d60f904e49e2dbd",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"meme"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5eefe63f7d60f904e49e2dbd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar meme",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"titulo\": \"Memes\",\n\t\"descricao\": \"Testando\",\n\t\"ano\": 2021\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}}/meme",
+					"host": [
+						"{{base_url}}}"
+					],
+					"path": [
+						"meme"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exlcuir meme",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"5eee0be6bb9a8409b4130043\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/meme",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"meme"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar meme",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZjBlZGYzZjMzM2ZmMDAxN2M3MTI3NyIsImlhdCI6MTU5Mjg1Nzk3NCwiZXhwIjoxNTkyOTQ0Mzc0fQ.TE2ESNhipeXYrsRsuSeIanzRzbWtXuWEYSJ16o4yeDU",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\":\"Lucas\",\r\n    \"descricao\":\"teste 2\",\r\n    \"ano\": 2020\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}} /meme/5eee0be6bb9a8409b4130043",
+					"host": [
+						"{{base_url}} "
+					],
+					"path": [
+						"meme",
+						"5eee0be6bb9a8409b4130043"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticação",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"cesar.augusto\",\r\n    \"password\": \"1199\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ec021-av2-auth.herokuapp.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"ec021-av2-auth",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZWZiZjc4MTk3NWJmMDAxNzFlNDY5OCIsImlhdCI6MTU5Mjc3MDgyMiwiZXhwIjoxNTkyODU3MjIyfQ.u_UNA1p4-NnzDeenrZuri9dGOonI-yTotOTOCcPTUBM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://ec021-av2-auth.herokuapp.com/auth/validateToken",
+					"protocol": "https",
+					"host": [
+						"ec021-av2-auth",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"validateToken"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
