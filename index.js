@@ -21,9 +21,10 @@ function logRequest(req, res, next) {
     console.log(msg);
     next();
 }
+
 /* Conexão com o servidor de autenticação externo à aplicação
    para a realização do login */
-   const login = axios.create(
+const login = axios.create(
     {
         baseURL: `https://ec021-av2-auth.herokuapp.com`
     }
@@ -45,7 +46,7 @@ server.post('/auth/login', logRequest, (req, res) => {
 
 /* Conexão com o middleware de autenticação (auth-server) externo à
    aplicação para a validação do token gerado */
-   const authServer = axios.create(
+const authServer = axios.create(
     {
         baseURL: `https://ec021-av2-auth.herokuapp.com`
     }
@@ -53,6 +54,7 @@ server.post('/auth/login', logRequest, (req, res) => {
 
 // Função de validação do token
 function validateToken(req, res, next) {
+
     let URL = '/auth/validateToken';
     let token = req.headers.token;
     let config = {
